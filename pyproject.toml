@@ -6,22 +6,23 @@ authors = ["David GERARD <david.gerard.23@ucl.ac.uk>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.11"
 numpy = "^2.1.3"
 matplotlib = "^3.9.2"
 scipy = "^1.14.1"
 
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.8.0"
 pytest = "^8.3.3"
+ruff = "^0.8.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 
+
 [tool.pytest.ini_options]
-pythonpath = [
-  ".", "src",
-]
+ pythonpath = [
+   ".", "src",
+ ]
