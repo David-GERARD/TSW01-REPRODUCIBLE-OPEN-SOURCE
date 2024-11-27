@@ -1,6 +1,9 @@
 name: Assignment Autograding
 
-on: push
+on: 
+  push:
+    branches:
+      - main
   
 jobs:
   task2:
