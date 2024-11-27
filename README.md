@@ -89,7 +89,7 @@ Currently, the project lacks reproducibility. Let’s fix that with **Poetry**:
    - **Version**: `0.0.1`  
    - **Description**: Add a short description.  
    - **Author/License**: Press Enter to skip.  
-   - **Python versions**: Enter `>=3.10` (meaning at least 3.10).  
+   - **Python versions**: Enter `^3.<your_version>` (at least 3.10). 
    - For dependencies: Enter `no` for both.
 
 > [!TIP]
@@ -181,19 +181,43 @@ In this task, we will ensure your codebase follows a consistent style and adhere
 poetry add ruff --group dev
 ```
 
-2. Check your code for linting issues by running:
+2. Add Ruff rules to the `pyproject.toml` file
+   - By default, Ruff doesn't have any formatting rules, so we need to select those we want to apply out of the [list of rules](https://docs.astral.sh/ruff/rules/).
+   - Open `pyproject.toml` and add the following rules:
+   ```toml
+   [tool.ruff]
+   [tool.ruff.lint]
+   select = [
+       # pycodestyle
+       "E",
+       # Pyflakes
+       "F",
+       # pyupgrade
+       "UP",
+       # flake8-bugbear
+       "B",
+       # flake8-simplify
+       "SIM",
+       # isort
+       "I",
+       # pep8-naming
+       "N",
+   ]
+   ```
+
+3. Check your code for linting issues by running:
    - Ruff will output a list of issues with line numbers and suggested fixes.
 ```bash
 poetry run ruff check .
 ```
 
-3. Fix Issues by either:
+4. Fix Issues by either:
    - Edit your files to address these issues, or
    - Automatically fix the issues by running:
 ```bash
 poetry run ruff check . --fix
 ```
-4. Commit Your Changes
+5. Commit Your Changes
    - Once all issues are resolved, commit your changes:
 
 ```bash
@@ -201,8 +225,6 @@ git add .
 git commit -m "style: apply linting fixes using Ruff"
 git push
 ```
-
-
 
 ---
 
