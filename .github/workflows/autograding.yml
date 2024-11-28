@@ -20,7 +20,7 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version-file: 'pyproject.toml' # Read python version from a file pyproject.toml
-        cache: 'pip'
+        cache: 'poetry'
 
     # Check Task 2: Poetry Setup
     - name: Check Task 2
@@ -28,11 +28,10 @@ jobs:
         python --version
         python -m pip install --upgrade pip
         pip install poetry
-
-        poetry install
         
         if [ -f "pyproject.toml" ] && [ -f "poetry.lock" ]; then
           echo "Poetry setup verified."
+          poetry install
         else
           echo "Error: Poetry files not found."
           exit 1
